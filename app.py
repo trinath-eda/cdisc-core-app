@@ -114,6 +114,9 @@ if uploaded_file:
             "-o", quote_if_needed(output_file)
         ]
 
+        # # Add Excel report template if XLSX
+        # if output_format == "XLSX":
+        #     cmd.extend(["-rt", "cdisc-rules-engine/resources/templates/report-template.xlsx"])
 
         st.write(f"Running: {' '.join(cmd)}")
 
@@ -128,3 +131,24 @@ if uploaded_file:
             st.error("Validation failed")
             st.text("STDOUT:\n" + result.stdout)
             st.text("STDERR:\n" + result.stderr)
+
+# # =======================
+# # Update Cache Button
+# # =======================
+# if st.button("Update Cache (CDISC Rules)"):
+#     if not api_key:
+#         st.warning("Please enter your CDISC Library API Key above.")
+#     else:
+#         cmd = [
+#             sys.executable, "cdisc-rules-engine/core.py", "update-cache",
+#             "--api-key", api_key
+#         ]
+#         st.write(f"Running: {' '.join(cmd)}")
+#         result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
+#         if result.returncode == 0:
+#             st.success("Cache updated successfully!")
+#             st.text(result.stdout)
+#         else:
+#             st.error("Cache update failed")
+#             st.text("STDOUT:\n" + result.stdout)
+#             st.text("STDERR:\n" + result.stderr)

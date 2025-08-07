@@ -19,3 +19,8 @@ Thumbs.db
 
 # Environment files
 .env
+
+# File folders
+uploads/
+results/
+resources/cache/

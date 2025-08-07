@@ -1,0 +1,13 @@
+@echo off
+echo Creating virtual environment...
+py -3.12 -m venv myenv
+
+echo Activating virtual environment...
+call venv\Scripts\activate.bat
+
+echo Installing requirements...
+pip install -r requirements.txt
+
+echo Starting the app...
+streamlit run app.py
+pause

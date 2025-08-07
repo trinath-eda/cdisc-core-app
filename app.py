@@ -103,15 +103,20 @@ if uploaded_file:
         original_stem = Path(uploaded_file.name).stem
         output_file = output_dir / f"{original_stem}_result"
 
+        # Define path to core script directory
+        cdisc_engine_dir = Path("cdisc-rules-engine")
+        core_script = cdisc_engine_dir / "core.py"
+        report_template = cdisc_engine_dir / "resources" / "templates" / "report-template.xlsx"
+
         # Build command
         cmd = [
-            sys.executable, "cdisc-rules-engine/core.py", "validate",
+            sys.executable, "core.py", "validate",
             "-s", standard,
             "-v", version,
-            "-rt", "cdisc-rules-engine/resources/templates/report-template.xlsx",
-            "-dp", quote_if_needed(temp_input),
+            "-rt", str(report_template.resolve()),
+            "-dp", str(temp_input.resolve()),
             "-of", output_format,
-            "-o", quote_if_needed(output_file)
+            "-o", str(output_file.resolve())
         ]
 
         # # Add Excel report template if XLSX
@@ -121,7 +126,7 @@ if uploaded_file:
         st.write(f"Running: {' '.join(cmd)}")
 
         # Run validation
-        result = subprocess.run(cmd, capture_output=True, text=True, shell=False)
+        result = subprocess.run(cmd, cwd=str(cdisc_engine_dir), capture_output=True, text=True, shell=False) # Run from within cdisc-rules-engine directory so relative schema paths work
 
         if result.returncode == 0:
             st.success("Validation completed!")

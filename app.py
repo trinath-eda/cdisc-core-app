@@ -8,6 +8,10 @@ from datetime import datetime, timedelta
 import shutil
 from dotenv import load_dotenv
 
+# Relative to the current script file
+base_dir = os.path.dirname(__file__)
+core_script = os.path.join(base_dir, 'cdisc-rules-engine', 'core.py')
+
 # Load environment variables from .env
 load_dotenv()
 API_KEY = os.getenv("CDISC_API_KEY")

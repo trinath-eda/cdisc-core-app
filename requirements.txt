@@ -71,8 +71,8 @@ pytest-cov==6.0.0
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.0
 pytz==2025.2
-pywin32==311
-pywin32-ctypes==0.2.3
+# pywin32==311
+# pywin32-ctypes==0.2.3
 PyYAML==6.0.2
 redis==4.5.0
 referencing==0.36.2

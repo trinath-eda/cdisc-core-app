@@ -34,6 +34,7 @@ cdisc-core-app/
 ├── .gitignore # Best practice exclusions
 ├── requirements.txt # Combined dependencies
 ├── LICENSE # MIT License
+├── run_app.bat # Batch file that runs few code automatically
 │
 ├── uploads/ # Temporary uploaded files
 ├── results/ # Validation result outputs
@@ -55,28 +56,15 @@ git clone --recurse-submodules https://github.com/trinath-eda/cdisc-core-app.git
 cd cdisc-core-app
 ```
 
-### 2. Create and activate a virtual environment
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
-
-# macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Install dependencies
-``` bash
-pip install -r requirements.txt
-```
-
-### 4. Add your .env file
+### 2. Add your .env file
 Create a .env file in the root directory:
 
 ```
 CDISC_API_KEY=your_cdisc_library_api_key
 ```
+### 3. Run the batch file `run_app.bat`
+Once you add your api key to the .env file then just run the `run_app.bat`.
+You can double tap the file in your file manager.
 
 ## ▶️ Running the App
 ```
